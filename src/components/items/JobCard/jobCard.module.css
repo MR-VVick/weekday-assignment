@@ -1,0 +1,123 @@
+.cardBody{
+    position: relative !important;
+    border-radius: 20px !important;
+    padding: 5px !important;
+}
+.chipContainer{
+    display: flex;
+    width: 100%;
+    padding: 10px 10px;
+}
+.chip{
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 9px !important;
+    padding: 4px 0 !important;
+    box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgb(230, 230, 230) !important;
+    background-color: white !important;
+}
+.cardContent{
+    width: 100%;
+    flex: 1 1 0% !important;
+    padding: 8px 16px !important;
+}
+.title{
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 3px !important;
+    color: #8b8b8b;
+}
+.subTitle{
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+}
+.location{
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    margin-top: 5px !important;
+}
+.salary{
+    font-size: 14px !important;
+    margin: 8px 0 !important;
+}
+.logo{
+    width: 25px;
+    height: 2.5rem
+}
+.aboutContainer{
+    height: 200px !important;
+}
+.aboutDescription::-webkit-scrollbar {
+    width: 10px;
+}
+.aboutDescription::-webkit-scrollbar-track {
+    background: transparent;
+    transition: background-color 0.3s;
+}
+.aboutDescription:hover::-webkit-scrollbar-track{
+    background: #f1f1f1;
+}
+.aboutDescription::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s;
+}
+.aboutDescription:hover::-webkit-scrollbar-thumb {
+    border: 2px solid #f1f1f1;
+    background:#888;
+}
+.link{
+    color: #4943da;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.cardActions{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: 5px 15px;
+}
+.cardActionsApplyButton{
+    background-color: rgb(85, 239, 196) !important;
+    color: rgb(0, 0, 0) !important;
+    font-weight: 500 !important;
+    padding: 8px 18px !important;
+    text-transform: capitalize !important;
+    box-shadow: none !important;
+    width: 100%;
+}
+.cardActionsReferralButton{
+    background-color: rgb(24, 118, 210) !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+    padding: 8px 18px !important;
+    text-transform: capitalize !important;
+    box-shadow: none !important;
+    width: 100%;
+}
+.cardActionsButtonAvatar{
+    height: 1.2rem !important;
+    width: 1.2rem !important;
+}
+.cardActionsButtoSpan{
+    margin-left: .5rem;
+}
+.viewButtonContainer{
+    text-align: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding: 0 20px 0 0;
+}
+.viewButton{
+    color: #4943da;
+    text-decoration: none;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    cursor: pointer;
+}

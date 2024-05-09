@@ -1,0 +1,6 @@
+.gridItem{
+    transition: transform 0.15s ease-in-out;
+}
+.gridItem:hover{
+    transform: scale(1.01)
+}
