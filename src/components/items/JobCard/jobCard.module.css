@@ -33,11 +33,13 @@
 .subTitle{
     font-size: 14px !important;
     line-height: 1.5 !important;
+    text-transform: capitalize;
 }
 .location{
     font-size: 11px !important;
     font-weight: 500 !important;
     margin-top: 5px !important;
+    text-transform: capitalize;
 }
 .salary{
     font-size: 14px !important;
@@ -93,7 +95,7 @@
     width: 100%;
 }
 .cardActionsReferralButton{
-    background-color: rgb(24, 118, 210) !important;
+    background-color: #4943da !important;
     color: #fff !important;
     font-weight: 500 !important;
     padding: 8px 18px !important;
@@ -104,6 +106,7 @@
 .cardActionsButtonAvatar{
     height: 1.2rem !important;
     width: 1.2rem !important;
+    filter: blur(1px);
 }
 .cardActionsButtoSpan{
     margin-left: .5rem;

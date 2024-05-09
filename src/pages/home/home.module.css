@@ -4,3 +4,10 @@
 .gridItem:hover{
     transform: scale(1.01)
 }
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+  
