@@ -93,6 +93,7 @@
     text-transform: capitalize !important;
     box-shadow: none !important;
     width: 100%;
+    border-radius: 8px !important;
 }
 .cardActionsReferralButton{
     background-color: #4943da !important;
@@ -102,6 +103,7 @@
     text-transform: capitalize !important;
     box-shadow: none !important;
     width: 100%;
+    border-radius: 8px !important;
 }
 .cardActionsButtonAvatar{
     height: 1.2rem !important;

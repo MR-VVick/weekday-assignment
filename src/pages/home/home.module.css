@@ -10,4 +10,10 @@
     align-items: center;
     height: 100px;
 }
+.noDataText{
+    margin: 20px 0px 0px !important;
+    font-size: 1rem;
+    line-height: 1.5 ;
+    font-weight: 700 !important;
+}
   

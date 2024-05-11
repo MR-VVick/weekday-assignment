@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardContent, Typography, Button, CardActions, Chip, Avatar, Box } from '@mui/material';
+import { Card, CardContent, Typography, Button, Chip, Avatar, Box } from '@mui/material';
 import styles from './jobCard.module.css';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,6 @@ const JobCard = ({
   salaryCurrencyCode,
   location,
   minExp,
-  maxExp,
   jobRole,
   companyName,
   logoUrl
@@ -106,9 +105,11 @@ const JobCard = ({
         </Box>
       </CardContent>
       <Box className={styles.cardActions}>
-        <Button className={styles.cardActionsApplyButton} variant="contained">
-          ⚡ Easy Apply
-        </Button>
+        <Link to={jdLink} target='_blank'>
+          <Button className={styles.cardActionsApplyButton} variant="contained">
+            ⚡ Easy Apply
+          </Button>
+        </Link>        
         <Button className={styles.cardActionsReferralButton} variant="contained">
           <Box display='flex' gap={.7} mr={1.2}>
             <Avatar 
