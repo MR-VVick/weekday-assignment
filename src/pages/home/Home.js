@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Home = () => {
   const dispatch = useDispatch();
+
+  // Selecting state from Redux store
   const { 
     jobData, 
     loading, 
@@ -31,20 +33,21 @@ const Home = () => {
     selectedRole,
     selectedLocation,
     selectedWorkMode
-  } = useSelector(
-    state => state.job
-  );
+  } = useSelector(state => state.job);
+
   const itemsPerPage = 9;
   const experienceData = getExperienceData();
   const workModeData = getWorkModeData();
   const allData = getSampleJdJSON();
   
+  // Initialize data on component mount
   useEffect(() => {
     const initialDataSlice = allData.slice(0, itemsPerPage);
     dispatch(setJobData(initialDataSlice));
     dispatch(setStartIndex(itemsPerPage));
   }, []);
 
+  // Handle infinite scroll
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -52,23 +55,26 @@ const Home = () => {
     };
   }, [startIndex, loading, hasMore, selectedMinExp, selectedCompany, selectedLocation, selectedMinPay, selectedRole, selectedWorkMode]);
 
+  // Fetch job data based on filter changes
   useEffect(() => {
-    fetchJobData()
-  },[selectedMinExp, selectedCompany, selectedLocation, selectedMinPay, selectedRole, selectedWorkMode])
+    fetchJobData();
+  }, [selectedMinExp, selectedCompany, selectedLocation, selectedMinPay, selectedRole, selectedWorkMode]);
 
+  // Generate a list of minimum salary options
   const generateMinSalaryList = () => {
     const maxSalary = Math.max(...allData.map(item => item.maxJdSalary));
     let minSalary = 0;
     const minSalaryList = [];
 
     while (minSalary <= maxSalary) {
-      minSalaryList.push({ value: minSalary, label: minSalary.toString()+ 'L' });
+      minSalaryList.push({ value: minSalary, label: minSalary.toString() + 'L' });
       minSalary += 10;
     }
 
     return minSalaryList;
   };
 
+  // Extract unique location names from job data
   const getUniqueLocationNames = () => {
     const locationNames = new Set();
     allData.forEach(job => {
@@ -80,6 +86,7 @@ const Home = () => {
     }));
   };
 
+  // Extract unique job roles from job data
   const getUniqueRoles = () => {
     const roles = new Set();
     allData.forEach(job => {
@@ -91,6 +98,7 @@ const Home = () => {
     }));
   };
 
+  // Fetch job data based on current filters
   const fetchJobData = () => {
     if (loading || !hasMore) return;
     dispatch(setLoading(true));
@@ -121,6 +129,7 @@ const Home = () => {
     }, 1000);
   };
 
+  // Handle scroll event for infinite scrolling
   const handleScroll = () => {
     const scrollHeight = window.innerHeight + document.documentElement.scrollTop;
     const totalHeight = document.documentElement.offsetHeight;
@@ -130,6 +139,7 @@ const Home = () => {
     }
   };
 
+  // Handle filter changes and update Redux state
   const handleFilterChange = (key, selectedOptions) => {
     let values = null;
 
@@ -168,11 +178,13 @@ const Home = () => {
         break;
     }
 
+    // Reset pagination and fetch new data
     dispatch(setJobData([]));
     dispatch(setStartIndex(0));
     dispatch(setHasMore(true));
   };
 
+  // Apply filters to job data
   const applyFilters = (data, filters) => {
     return data.filter(item => {
       const meetsMinExp = !filters.minExp || item.minExp >= filters.minExp;
@@ -197,6 +209,7 @@ const Home = () => {
     });
   };
 
+  // Render the component
   return (
     <Box
       sx={{
@@ -207,6 +220,7 @@ const Home = () => {
       }}
     >
       <Box display='flex' flexDirection='row' gap={2} flexWrap='wrap'>
+        {/* Selectors for filtering */}
         <Select
           options={experienceData}
           placeholder="Experience"
@@ -257,6 +271,7 @@ const Home = () => {
           isClearable
         />
       </Box>
+      {/* Display job cards or no data message */}
       {
         jobData.length !== 0 ? (
           <Grid container spacing={4}>
@@ -287,14 +302,17 @@ const Home = () => {
             ))}
           </Grid>
         ) : (
-          !loading &&
-          <Box display='flex' flexDirection='column' alignItems='center' width='100%'>
-            <img width={150} height={150} src="https://jobs.weekday.works/_next/static/media/nothing-found.4d8f334c.png" alt="image" />
-            <Typography className={styles.noDataText} variant='body1'>No Jobs available for this category at the moment</Typography>
-          </Box>
+          // Display no jobs message if no data and not loading
+          !loading && (
+            <Box display='flex' flexDirection='column' alignItems='center' width='100%'>
+              <img width={150} height={150} src="https://jobs.weekday.works/_next/static/media/nothing-found.4d8f334c.png" alt="image" />
+              <Typography className={styles.noDataText} variant='body1'>No Jobs available for this category at the moment</Typography>
+            </Box>
+          )
         )
       }
 
+      {/* Display loader if loading */}
       {loading && (
         <div className={styles.loaderContainer}>
           <CircularProgress />
